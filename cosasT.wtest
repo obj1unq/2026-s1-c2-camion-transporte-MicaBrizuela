@@ -1,0 +1,135 @@
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+import cosas.*
+describe "las cosas" {
+  test "knightRider con peso esperado" {
+    assert.equals(500, knightRider.peso())
+  }
+
+  test "knightRider con nivel de peligrosidad esperado" {
+    assert.equals(10, knightRider.nivelPeligrosidad())
+  }
+
+  test "asignar arenaAGranel con peso 1" {
+    arenaAGranel.peso(1)
+    assert.equals(1, arenaAGranel.peso())
+  }
+
+  test "arenaAGranel con nivel de peligrosidad esperado" {
+    assert.equals(1, arenaAGranel.nivelPeligrosidad())
+  }
+
+  //agregar a bumblebee
+
+  test "paqueteDeLadrillos con ningun ladrillo tiene 0 peso"{
+    assert.equals(0, paqueteDeLadrillos.peso())
+  }
+
+  test "asinar paqueteDeLadrillos con 1 ladrillo tiene peso 2"{
+    paqueteDeLadrillos.cantidadDeLadrillos(1)
+    assert.equals(2, paqueteDeLadrillos.peso())
+  }
+
+  test "paqueteDeLadrillos con nivel de peligrosidad esperado"{
+    assert.equals(2, paqueteDeLadrillos.nivelPeligrosidad())
+  }
+
+  test "bateriaAntiarea sin misiles con peso esperado" {
+    assert.equals(200, bateriaAntiaerea.peso())
+  }
+
+    test "bateriaAntiarea sin misiles con nivel de peligrosidad esperado" {
+    assert.equals(0, bateriaAntiaerea.nivelPeligrosidad())
+  }
+
+    test "bateriaAntiarea con misiles con peso esperado" {
+        bateriaAntiaerea.agregarMisiles()
+    assert.equals(300, bateriaAntiaerea.peso())
+  }
+
+    test "bateriaAntiarea con misiles con nivel de peligrosidad esperado" {
+        bateriaAntiaerea.agregarMisiles()
+    assert.equals(100, bateriaAntiaerea.nivelPeligrosidad())
+  }
+
+    test "asignar residuosRadioactivos con peso 1" {
+    residuosRadioactivos.peso(1)
+    assert.equals(1, residuosRadioactivos.peso())
+  }
+
+  test "residuosRadioactivos con nivel de peligrosidad esperado" {
+    assert.equals(200, residuosRadioactivos.nivelPeligrosidad())
+  }
+}
+
+describe "mas cosas" {
+    test "contenedorPortuario sin cosas"{
+        assert.that(contenedorPortuario.cosas().isEmpty())
+    }
+
+    test "peso de contenedorPortuario vacio es el esperado"{
+        assert.equals(100, contenedorPortuario.peso())
+    }
+
+    test "nivel de peligrosidad de contenedorPortuario vacio es el esperado"{
+        assert.equals(0, contenedorPortuario.nivelPeligrosidad())
+    }
+
+    test "agregar cosas a contenedorPortuario" {
+        contenedorPortuario.agregarCosas(#{knightRider})
+        assert.equals(#{knightRider}, contenedorPortuario.cosas())
+    }
+
+    test "peso de contenedorPortuario con un knightrider es el esperado"{
+        contenedorPortuario.agregarCosas(#{knightRider})
+        assert.equals(100+knightRider.peso(), contenedorPortuario.peso())
+    }
+
+    test "nivel de peligrosidad de contenedorPortuario con un knightrider y arenaAGranel es el esperado"{
+        contenedorPortuario.agregarCosas(#{knightRider,arenaAGranel})
+        assert.equals(knightRider.nivelPeligrosidad().max(arenaAGranel.nivelPeligrosidad()), contenedorPortuario.nivelPeligrosidad())
+    }
+
+    test "embalaje no tiene peso ni nivel de peligrosidad por si solo, falla"{
+        assert.throwsException({ embalajeDeSeguridad.peso() })
+        assert.throwsException({ embalajeDeSeguridad.nivelPeligrosidad() })
+    }
+
+    test "embalaje envuelve a knightRider tiene el peso de knightrider"{
+        embalajeDeSeguridad.embalar(knightRider)
+        assert.equals(knightRider.peso(), embalajeDeSeguridad.peso())
+    }
+
+    test "embalaje envuelve a knightRider tiene la mitad del nivel de peligrosidad de knightrider"{
+        embalajeDeSeguridad.embalar(knightRider)
+        assert.equals(knightRider.nivelPeligrosidad()/2, embalajeDeSeguridad.nivelPeligrosidad())
+    }
+
+}
+
+describe "cantidad de bultos por cada cosa" {
+  test "knightRider" {
+    assert.equals(1, knightRider.bultos())
+  }
+
+}
+
+describe "efectos por cada cossa luego de un accidente"{
+  test "knightRider"{
+    assert.that(1==1)
+  }
+}
