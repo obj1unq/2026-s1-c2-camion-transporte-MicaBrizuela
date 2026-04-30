@@ -1,10 +1,12 @@
 // camion.wlk
+// camion.wlk
+// camion.wlk
 import cosas.*
 
 object camion {
 	const property cosas = #{}
-	const property tara = 1000
-	const property pesoMaximoAceptable = 2500
+	var property tara = 1000
+	var property pesoMaximoAceptable = 2500
 		
 	method cargar(unaCosa) {
 		cosas.add(unaCosa)
@@ -73,5 +75,41 @@ object camion {
 	method sufrirAccidente(){
 		cosas.forEach({cosa => cosa.sufrirAccidente()})
 	}
+	method transportar(destino, camino){
+		self.validarViaje(camino)
+		destino.recibirCargo(cosas)
+		cosas.forEach({cosa => self.descargar(cosa)})
+	}
 
+	method validarViaje(camino){
+		if(!camino.puedeSorportarElViaje(self)){
+			self.error("no puede soportar el viaje")
+		}
+	}
+
+}
+
+//tipo destino
+
+object almacen {
+	const property inventario = #{}
+
+	method recibirCargo(conjunto){
+		inventario.addAll(conjunto)
+	}
+}
+
+//tipo camino
+
+object ruta9{
+	method puedeSorportarElViaje(transporte){
+		return transporte.puedeCircularEnRuta(20)
+	}
+}
+
+object caminosVecinales {
+var property pesoSoportado = 0
+	method puedeSorportarElViaje(transporte){
+		return transporte.peso() < pesoSoportado
+	}
 }
