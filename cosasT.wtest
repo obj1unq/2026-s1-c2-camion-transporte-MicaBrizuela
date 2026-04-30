@@ -14,6 +14,22 @@
 // cosasT.wtest
 // cosasT.wtest
 // cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
+// cosasT.wtest
 import cosas.*
 describe "las cosas" {
   test "knightRider con peso esperado" {
@@ -33,7 +49,19 @@ describe "las cosas" {
     assert.equals(1, arenaAGranel.nivelPeligrosidad())
   }
 
-  //agregar a bumblebee
+  test "bumblebee con peso esperado" {
+    assert.equals(800, bumblebee.peso())
+  }
+
+  test "bumblebee auto con nivel de peligrosidad esperado" {
+    bumblebee.transformarEnAuto()
+    assert.equals(15, bumblebee.nivelPeligrosidad())
+  }
+
+  test "bumblebee robot con nivel de peligrosidad esperado" {
+    bumblebee.transformarEnRobot()
+    assert.equals(30, bumblebee.nivelPeligrosidad())
+  }
 
   test "paqueteDeLadrillos con ningun ladrillo tiene 0 peso"{
     assert.equals(0, paqueteDeLadrillos.peso())
@@ -126,10 +154,64 @@ describe "cantidad de bultos por cada cosa" {
     assert.equals(1, knightRider.bultos())
   }
 
-}
-
-describe "efectos por cada cossa luego de un accidente"{
-  test "knightRider"{
-    assert.that(1==1)
+  test "arenaAGranel" {
+    assert.equals(1, arenaAGranel.bultos())
   }
+
+  test "residuosRadioactivos" {
+    assert.equals(1, residuosRadioactivos.bultos())
+  }
+
+  test "contenedorPortuario vacio" {
+    assert.equals(1, contenedorPortuario.bultos())
+  }
+
+  test "contenedorPortuario con un knightRider" {
+    contenedorPortuario.agregarCosas(#{knightRider})
+    assert.equals(2, contenedorPortuario.bultos())
+  }
+
+
+  test "bumblebee" {
+    assert.equals(2, bumblebee.bultos())
+  }
+
+  test "embalajeDeSeguridad" {
+    assert.equals(2, embalajeDeSeguridad.bultos())
+  }
+
+  test "paqueteDeLadrillos con 0 ladrillos" {
+    assert.equals(1, paqueteDeLadrillos.bultos())
+  }
+
+  test "paqueteDeLadrillos con 100 ladrillos" {
+    paqueteDeLadrillos.cantidadDeLadrillos(100)
+    assert.equals(1, paqueteDeLadrillos.bultos())
+  }
+
+
+  test "paqueteDeLadrillos con 101 ladrillos" {
+    paqueteDeLadrillos.cantidadDeLadrillos(101)
+    assert.equals(2, paqueteDeLadrillos.bultos())
+  }
+
+  test "paqueteDeLadrillos con 300 ladrillos" {
+    paqueteDeLadrillos.cantidadDeLadrillos(300)
+    assert.equals(2, paqueteDeLadrillos.bultos())
+  }
+
+  test "paqueteDeLadrillos con 301 ladrillos" {
+    paqueteDeLadrillos.cantidadDeLadrillos(301)
+    assert.equals(3, paqueteDeLadrillos.bultos())
+  }
+
+  test "bateriaAntiarea sin misiles" {
+    assert.equals(1, bateriaAntiaerea.bultos())
+  }
+
+  test "bateriaAntiarea con misiles" {
+    bateriaAntiaerea.agregarMisiles()
+    assert.equals(2, bateriaAntiaerea.bultos())
+  }
+
 }
