@@ -65,7 +65,7 @@ object camion {
 
 	method todosLosPesos(){
 		return cosas.map({cosa => cosa.peso()}) 
-		// retorna lista de numeros en algun orden no especifico => conjunto a lista
+		// retorna lista de numeros en algun orden no especifico, transformacion conjunto a lista
 	}
 
 	method totalBultos(){
@@ -89,7 +89,7 @@ object camion {
 
 }
 
-//tipo destino
+//tipo destino:
 
 object almacen {
 	const property inventario = #{}
@@ -99,7 +99,7 @@ object almacen {
 	}
 }
 
-//tipo camino
+//tipo camino:
 
 object ruta9{
 	method puedeSorportarElViaje(transporte){

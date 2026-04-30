@@ -89,7 +89,7 @@
 import cosas.*
 import camion.*
 
-describe "casos de ejemplo con requemientos individuales para camion"{
+describe "casos con requerimientos individuales para camion"{
     test "carga y descarga" {
         assert.that(camion.cosas().isEmpty())
         camion.cargar(bumblebee)
@@ -133,7 +133,7 @@ describe "casos de ejemplo con requemientos individuales para camion"{
 
 }
 
-describe "casos ejemplo con camion con arena 50k y bumblebee"{
+describe "casos con camion cargado con 50k de arena y bumblebee"{
     method initialize(){
         arenaAGranel.peso(50)
         camion.cargar(bumblebee)
@@ -153,7 +153,7 @@ describe "casos ejemplo con camion con arena 50k y bumblebee"{
     }
 }
 
-describe "caso ejemplo con camion cargado con bumblebee auto y 300 ladrillos"{
+describe "casos con camion cargado con bumblebee auto y 300 ladrillos"{
     method initialize(){
         bumblebee.transformarEnAuto()
         camion.cargar(bumblebee)
@@ -199,7 +199,7 @@ describe "caso ejemplo con camion cargado con bumblebee auto y 300 ladrillos"{
 
 }
     
-describe "casos ejemplo totalBustos con diferentes estados iniciales"{
+describe "casos de totalBustos"{
     test "caso 1"{
     contenedorPortuario.agregarCosas(#{knightRider,bumblebee})
     camion.cargar(contenedorPortuario)
@@ -266,7 +266,7 @@ describe "casos de accidentes"{
     }
 }
 
-describe "transporte"{
+describe "casos de transporte"{
     method initialize(){
         almacen.recibirCargo(#{knightRider,residuosRadioactivos})
         camion.cargar(bumblebee)
